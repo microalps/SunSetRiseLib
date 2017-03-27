@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace SunSetRiseLib.Library
+namespace KoenZomers.Tools.SunSetRiseLib
 {
     /// <summary>
     /// Library to allow calculating sunrise and sunset for a specific coordinate on the world
     /// </summary>
-    public class Util
+    public class SunSetRiseLib
     {
         /// <summary>
         /// Convert radian angle to degrees

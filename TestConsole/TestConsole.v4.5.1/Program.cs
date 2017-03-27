@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SunSetRiseLib.TestConsole
+namespace KoenZomers.Tools.SunSetRiseLib
 {
     class Program
     {
@@ -22,8 +22,8 @@ namespace SunSetRiseLib.TestConsole
             Console.WriteLine("Date: " + date.ToLongDateString());
             Console.WriteLine("UTC Offset: " + utcOffset);
             Console.WriteLine("Coordinates: LONG " + longitude + " LAT " + latitude);
-            Console.WriteLine("Sunrise: " + Library.Util.SunriseAt(latitude, longitude, date, utcOffset));
-            Console.WriteLine("SunSet: " + Library.Util.SunsetAt(latitude, longitude, date, utcOffset));
+            Console.WriteLine("Sunrise: " + SunSetRiseLib.SunriseAt(latitude, longitude, date, utcOffset));
+            Console.WriteLine("SunSet: " + SunSetRiseLib.SunsetAt(latitude, longitude, date, utcOffset));
         }
     }
 }

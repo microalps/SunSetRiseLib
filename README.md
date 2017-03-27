@@ -21,11 +21,25 @@ var utcOffset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
 Console.WriteLine("Date: " + date.ToLongDateString());
 Console.WriteLine("UTC Offset: " + utcOffset);
 Console.WriteLine("Coordinates: LONG " + longitude + " LAT " + latitude);
-Console.WriteLine("Sunrise: " + Library.Util.SunriseAt(latitude, longitude, date, utcOffset));
-Console.WriteLine("SunSet: " + Library.Util.SunsetAt(latitude, longitude, date, utcOffset));
+Console.WriteLine("Sunrise: " + SunSetRiseLib.SunriseAt(latitude, longitude, date, utcOffset));
+Console.WriteLine("SunSet: " + SunSetRiseLib.SunsetAt(latitude, longitude, date, utcOffset));
 ```
 
 ![Sample output](./SampleOutput.png)
+
+## NuGet
+
+Also available as NuGet Package: [SunSetRiseLibKZ](https://www.nuget.org/packages/SunSetRiseLibKZ/)
+
+## Version History
+
+Version 1.1.1.0 - March 27, 2017
+
+Changed namespace of code to make it look cleaner when used
+
+Version 1.1.0.0 - March 27, 2017
+
+Initial version as forked. Cleaned up code, compiled against .NET 4.6.2 and signed the assemblies.
 
 ## Credits
 
