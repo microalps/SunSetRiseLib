@@ -5,7 +5,7 @@ namespace SunSetRiseLib.Library
     /// <summary>
     /// Library to allow calculating sunrise and sunset for a specific coordinate on the world
     /// </summary>
-    public class SunSetRiseLib
+    public class Util
     {
         /// <summary>
         /// Convert radian angle to degrees

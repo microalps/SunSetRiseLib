@@ -21,8 +21,8 @@ var utcOffset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
 Console.WriteLine("Date: " + date.ToLongDateString());
 Console.WriteLine("UTC Offset: " + utcOffset);
 Console.WriteLine("Coordinates: LONG " + longitude + " LAT " + latitude);
-Console.WriteLine("Sunrise: " + Library.SunSetRiseLib.SunriseAt(latitude, longitude, date, utcOffset));
-Console.WriteLine("SunSet: " + Library.SunSetRiseLib.SunsetAt(latitude, longitude, date, utcOffset));
+Console.WriteLine("Sunrise: " + Library.Util.SunriseAt(latitude, longitude, date, utcOffset));
+Console.WriteLine("SunSet: " + Library.Util.SunsetAt(latitude, longitude, date, utcOffset));
 ```
 
 ![Sample output](./SampleOutput.png)
