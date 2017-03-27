@@ -1,50 +1,29 @@
-﻿using SunSetRiseLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace TestConsole.v4._5._1
+namespace SunSetRiseLib.TestConsole
 {
     class Program
     {
-        static double JD = 0;
-        static int zone = -8; // Seattle time Zone
-        static double latitude = 47.6; // Seattle lat
-        static double longitude = -122.32; // Seattle lon 
-        static bool dst = true; // Day Light Savings 
-        static DateTime date = DateTime.Today;
-
         static void Main(string[] args)
         {
+            // Date for which to calculate the sunrise and sunset
+            var date = DateTime.Today;
 
-            JD = Util.calcJD(date);  //OR   JD = Util.calcJD(2014, 6, 1);
-            double sunRise = Util.calcSunRiseUTC(JD, latitude, longitude);
-            double sunSet = Util.calcSunSetUTC(JD, latitude, longitude);
-            double sunrise = Util.calcSunRiseUTCWithFraction(JD, latitude, longitude);
+            // Latitude for which to calculate the sunrise/sunset
+            var latitude = 52.3702157;
 
-            System.Console.WriteLine("#########################");
-            System.Console.WriteLine("Util.getTimeString");
-            System.Console.WriteLine("#########################");
-            System.Console.Write("SunRise ");
-            System.Console.WriteLine(Util.getTimeString(sunRise, zone, JD, dst));
-            System.Console.Write("Sunrise ");
-            System.Console.WriteLine(Util.getTimeString(sunrise, zone, JD, dst));
-            System.Console.Write("SunSet ");
-            System.Console.WriteLine(Util.getTimeString(sunSet, zone, JD, dst));
+            // Longitude for which to calculate the sunrise/sunset
+            var longitude = 4.8951679;
             
+            // Hours from UTC which this location is in
+            var utcOffset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
 
-            System.Console.WriteLine("");
-            System.Console.WriteLine("#########################");
-            System.Console.WriteLine("Util.getDateTime");
-            System.Console.WriteLine("#########################");
-            System.Console.Write("SunRise ");
-            System.Console.WriteLine(Util.getDateTime(sunRise, zone, date, dst).Value.ToString());
-            System.Console.Write("Sunrise ");
-            System.Console.WriteLine(Util.getDateTime(sunrise, zone, date, dst).Value.ToString());
-            System.Console.Write("SunSet ");
-            System.Console.WriteLine(Util.getDateTime(sunSet, zone, date, dst).Value.ToString());
+            // Write the output to the screen
+            Console.WriteLine("Date: " + date.ToLongDateString());
+            Console.WriteLine("UTC Offset: " + utcOffset);
+            Console.WriteLine("Coordinates: LONG " + longitude + " LAT " + latitude);
+            Console.WriteLine("Sunrise: " + Library.SunSetRiseLib.SunriseAt(latitude, longitude, date, utcOffset));
+            Console.WriteLine("SunSet: " + Library.SunSetRiseLib.SunsetAt(latitude, longitude, date, utcOffset));
         }
     }
 }
