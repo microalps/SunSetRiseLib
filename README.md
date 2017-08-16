@@ -29,9 +29,13 @@ Console.WriteLine("SunSet: " + SunSetRiseLib.SunsetAt(latitude, longitude, date,
 
 ## NuGet
 
-Also available as NuGet Package: [SunSetRiseLibKZ](https://www.nuget.org/packages/SunSetRiseLibKZ/)
+Also available as NuGet Package: [KoenZomers.SunSetRise](https://www.nuget.org/packages/KoenZomers.SunSetRise)
 
 ## Version History
+
+Version 1.1.2.0 - August 16, 2017
+
+Minor update just to accommodate the NuGet package name change to get it aligned with my other NuGet packages
 
 Version 1.1.1.0 - March 27, 2017
 
