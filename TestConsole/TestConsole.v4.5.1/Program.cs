@@ -14,7 +14,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
 
             // Longitude for which to calculate the sunrise/sunset
             var longitude = 4.8951679;
-            
+
             // Hours from UTC which this location is in
             var utcOffset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
 
@@ -24,6 +24,11 @@ namespace KoenZomers.Tools.SunSetRiseLib
             Console.WriteLine("Coordinates: LONG " + longitude + " LAT " + latitude);
             Console.WriteLine("Sunrise: " + SunSetRiseLib.SunriseAt(latitude, longitude, date, utcOffset));
             Console.WriteLine("SunSet: " + SunSetRiseLib.SunsetAt(latitude, longitude, date, utcOffset));
+
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                Console.ReadLine();
+            }
         }
     }
 }

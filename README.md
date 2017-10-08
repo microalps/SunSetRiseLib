@@ -33,6 +33,10 @@ Also available as NuGet Package: [KoenZomers.SunSetRise](https://www.nuget.org/p
 
 ## Version History
 
+Version 1.1.2.1 - October 8, 2017
+
+Minor update to return a NULL when the sunset or sunrise can't be calculated based on the provided lat or long in combination with the timezone. Before it would throw an exception instead.
+
 Version 1.1.2.0 - August 16, 2017
 
 Minor update just to accommodate the NuGet package name change to get it aligned with my other NuGet packages

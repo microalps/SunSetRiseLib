@@ -367,7 +367,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="latitude">Latitude for which to calculate the sunset</param>
         /// <param name="longitude">Longitude for which to calculate the sunset</param>
         /// <returns>DateTime containing the time when the sun will set today</returns>
-        public static DateTime SunsetToday(double latitude, double longitude)
+        public static DateTime? SunsetToday(double latitude, double longitude)
         {
             return SunsetAt(latitude, longitude, DateTime.Today);
         }
@@ -379,7 +379,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="longitude">Longitude for which to calculate the sunset</param>
         /// <param name="date">Date for which to calculate the sunset</param>
         /// <returns>DateTime containing the time when the sun will set at the provided date</returns>
-        public static DateTime SunsetAt(double latitude, double longitude, DateTime date)
+        public static DateTime? SunsetAt(double latitude, double longitude, DateTime date)
         {
 
             return SunsetAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours);
@@ -393,11 +393,11 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="date">Date for which to calculate the sunset</param>
         /// <param name="utcOffset">Hours from UTC in which the location currently is in</param>
         /// <returns>DateTime containing the time when the sun will set at the provided date</returns>
-        public static DateTime SunsetAt(double latitude, double longitude, DateTime date, int utcOffset)
+        public static DateTime? SunsetAt(double latitude, double longitude, DateTime date, int utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
             double sunset = CalculateSunSetUTC(julianDay, latitude, longitude);
-            return GetDateTime(sunset, utcOffset, date, false).Value;
+            return GetDateTime(sunset, utcOffset, date, false);
         }
     }
 }
