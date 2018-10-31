@@ -293,33 +293,8 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// </summary>
         private static DateTime? GetDateTime(double minutes, DateTime date)
         {
-            DateTime? retVal = null;
-
-            if ((minutes >= 0) && (minutes < 1440))
-            {
-                var floatHour = minutes / 60.0;
-                var hour = Math.Floor(floatHour);
-                var floatMinute = 60.0 * (floatHour - Math.Floor(floatHour));
-                var minute = Math.Floor(floatMinute);
-                var floatSec = 60.0 * (floatMinute - Math.Floor(floatMinute));
-                var second = Math.Floor(floatSec + 0.5);
-                if (second > 59)
-                {
-                    second = 0;
-                    minute += 1;
-                }
-                if ((second >= 30)) minute++;
-                if (minute > 59)
-                {
-                    minute = 0;
-                    hour += 1;
-                }
-                return new DateTime(date.Year, date.Month, date.Day, (int)hour, (int)minute, (int)second);
-            }
-            else
-            {
-                return retVal;
-            }
+            if (double.IsNaN(minutes)) return null;
+            return date.Add(TimeSpan.FromMinutes(minutes));
         }
 
         /// <summary>
