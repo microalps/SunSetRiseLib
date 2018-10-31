@@ -317,8 +317,11 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <returns>DateTime containing the time when the sun will rise at the provided date</returns>
         public static DateTime? SunriseAt(double latitude, double longitude, DateTime date)
         {
-
+#if NET20
             return SunriseAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(date).Hours);
+#else
+            return SunriseAt(latitude, longitude, date, TimeZoneInfo.Local.GetUtcOffset(date).Hours);
+#endif
         }
 
         /// <summary>
@@ -357,8 +360,11 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <returns>DateTime containing the time when the sun will set at the provided date</returns>
         public static DateTime? SunsetAt(double latitude, double longitude, DateTime date)
         {
-
+#if NET20
             return SunsetAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(date).Hours);
+#else
+            return SunsetAt(latitude, longitude, date, TimeZoneInfo.Local.GetUtcOffset(date).Hours);
+#endif
         }
 
         /// <summary>
