@@ -318,7 +318,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         public static DateTime? SunriseAt(double latitude, double longitude, DateTime date)
         {
 
-            return SunriseAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours);
+            return SunriseAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(date).Hours);
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         public static DateTime? SunsetAt(double latitude, double longitude, DateTime date)
         {
 
-            return SunsetAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours);
+            return SunsetAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(date).Hours);
         }
 
         /// <summary>
