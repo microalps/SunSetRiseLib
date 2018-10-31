@@ -303,7 +303,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="latitude">Latitude for which to calculate the sunrise</param>
         /// <param name="longitude">Longitude for which to calculate the sunrise</param>
         /// <returns>DateTime containing the time when the sun will rise today</returns>
-        public static DateTime SunriseToday(double latitude, double longitude)
+        public static DateTime? SunriseToday(double latitude, double longitude)
         {
             return SunriseAt(latitude, longitude, DateTime.Today);
         }
@@ -315,7 +315,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="longitude">Longitude for which to calculate the sunrise</param>
         /// <param name="date">Date for which to calculate the sunrise</param>
         /// <returns>DateTime containing the time when the sun will rise at the provided date</returns>
-        public static DateTime SunriseAt(double latitude, double longitude, DateTime date)
+        public static DateTime? SunriseAt(double latitude, double longitude, DateTime date)
         {
 
             return SunriseAt(latitude, longitude, date, TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours);
@@ -329,12 +329,12 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="date">Date for which to calculate the sunrise</param>
         /// <param name="utcOffset">Hours from UTC in which the location currently is in</param>
         /// <returns>DateTime containing the time when the sun will rise at the provided date</returns>
-        public static DateTime SunriseAt(double latitude, double longitude, DateTime date, int utcOffset)
+        public static DateTime? SunriseAt(double latitude, double longitude, DateTime date, int utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
             double timeUTC = CalculateSunRiseUTC(julianDay, latitude, longitude);
             double sunrise = CalculateSunRiseUTC(julianDay + (timeUTC / 1440.0), latitude, longitude);
-            return GetDateTime(sunrise, utcOffset, date, false).Value;
+            return GetDateTime(sunrise, utcOffset, date, false);
         }
 
         /// <summary>
