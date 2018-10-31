@@ -357,7 +357,8 @@ namespace KoenZomers.Tools.SunSetRiseLib
         public static DateTime SunriseAt(double latitude, double longitude, DateTime date, int utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
-            double sunrise = CalculateSunRiseUTC(julianDay, latitude, longitude);
+            double timeUTC = CalculateSunRiseUTC(julianDay, latitude, longitude);
+            double sunrise = CalculateSunRiseUTC(julianDay + (timeUTC / 1440.0), latitude, longitude);
             return GetDateTime(sunrise, utcOffset, date, false).Value;
         }
 
@@ -396,7 +397,8 @@ namespace KoenZomers.Tools.SunSetRiseLib
         public static DateTime? SunsetAt(double latitude, double longitude, DateTime date, int utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
-            double sunset = CalculateSunSetUTC(julianDay, latitude, longitude);
+            double timeUTC = CalculateSunSetUTC(julianDay, latitude, longitude);
+            double sunset = CalculateSunSetUTC(julianDay + (timeUTC / 1440.0), latitude, longitude);
             return GetDateTime(sunset, utcOffset, date, false);
         }
     }
