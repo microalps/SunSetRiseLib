@@ -23,27 +23,27 @@ namespace KoenZomers.Tools.SunSetRiseLib.UnitTest
     public void TestSummer()
     {
       var TestDate = new DateTime(2018, 6, 21);
-      var Expected = 5;
+      var Expected = 9; //5am local, 9am UTC
       var Sunrise = SunSetRiseLib.SunriseAt(NewYorkLat, NewYorkLong, TestDate);
-      Assert.AreEqual(Expected, NotNullable(Sunrise).Hour);
+      Assert.AreEqual(Expected, NotNullable(Sunrise).ToUniversalTime().Hour);
     }
 
     [TestMethod]
     public void TestWinter()
     {
       var TestDate = new DateTime(2018, 12, 21);
-      var Expected = 7;
+      var Expected = 12; //7am local, 12pm UTC
       var Sunrise = SunSetRiseLib.SunriseAt(NewYorkLat, NewYorkLong, TestDate);
-      Assert.AreEqual(Expected, NotNullable(Sunrise).Hour);
+      Assert.AreEqual(Expected, NotNullable(Sunrise).ToUniversalTime().Hour);
     }
 
     [TestMethod]
     public void TestRounding()
     {
       var TestDate = new DateTime(2018, 12, 26);
-      var Expected = TestDate.AddHours(7).AddMinutes(18).AddSeconds(46);
-      var Sunrise = SunSetRiseLib.SunriseAt(NewYorkLat, NewYorkLong, TestDate);
-      Assert.IsTrue(Math.Abs((Expected - NotNullable(Sunrise)).TotalSeconds) < 30, string.Format("Expected: 7:18:46 or 7:19:00, Actual: {0:h:mm:ss}", Sunrise));
+      var Expected = TestDate.AddHours(12).AddMinutes(18).AddSeconds(46); //7:18:46 local, 12:18:46 UTC
+      var Sunrise = SunSetRiseLib.SunriseAt(NewYorkLat, NewYorkLong, TestDate, 0);
+      Assert.IsTrue(Math.Abs((Expected - NotNullable(Sunrise)).TotalSeconds) < 30, string.Format("Expected: 12:18:46 or 12:19:00 (UTC), Actual: {0:h:mm:ss}", Sunrise));
     }
 
     [TestMethod]
