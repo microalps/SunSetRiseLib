@@ -279,7 +279,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <summary>
         /// Create a datetime out of the variables
         /// </summary>
-        private static DateTime? GetDateTime(double time, int timezone, DateTime date, bool dst)
+        private static DateTime? GetDateTime(double time, double timezone, DateTime date, bool dst)
         {
             double JD = CalculateJulianDay(date);
             var timeLocal = time + (timezone * 60.0);
@@ -332,7 +332,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="date">Date for which to calculate the sunrise</param>
         /// <param name="utcOffset">Hours from UTC in which the location currently is in</param>
         /// <returns>DateTime containing the time when the sun will rise at the provided date</returns>
-        public static DateTime? SunriseAt(double latitude, double longitude, DateTime date, int utcOffset)
+        public static DateTime? SunriseAt(double latitude, double longitude, DateTime date, double utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
             double timeUTC = CalculateSunRiseUTC(julianDay, latitude, longitude);
@@ -375,7 +375,7 @@ namespace KoenZomers.Tools.SunSetRiseLib
         /// <param name="date">Date for which to calculate the sunset</param>
         /// <param name="utcOffset">Hours from UTC in which the location currently is in</param>
         /// <returns>DateTime containing the time when the sun will set at the provided date</returns>
-        public static DateTime? SunsetAt(double latitude, double longitude, DateTime date, int utcOffset)
+        public static DateTime? SunsetAt(double latitude, double longitude, DateTime date, double utcOffset)
         {
             double julianDay = CalculateJulianDay(date);
             double timeUTC = CalculateSunSetUTC(julianDay, latitude, longitude);
